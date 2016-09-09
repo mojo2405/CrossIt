@@ -1,0 +1,52 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
+    tools:context=".progressWheelFragment">
+
+    <RelativeLayout
+        android:id="@+id/level_diplay_container"
+        android:layout_width="wrap_content"
+        android:layout_height="101dp"
+        android:background="@android:color/transparent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gridBackground"
+            android:layout_below="@+id/viewDivider"
+            android:layout_alignParentBottom="true"></FrameLayout>
+
+        <ImageView
+            android:layout_width="92dp"
+            android:layout_height="98dp"
+            android:src="@drawable/crossit"
+            android:layout_alignBottom="@+id/viewDivider"
+            android:layout_centerHorizontal="true" />
+
+    <View style="@style/Divider"
+        android:id="@+id/viewDivider" />
+
+        <com.example.david.myapplication.ProgressWheel
+            android:id="@+id/pw_spinner"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="42dp"
+            android:background="@android:color/transparent"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_centerHorizontal="true"
+            ProgressWheel:pwText="Test"
+            ProgressWheel:pwCircleColor="#FFFFFF"
+            ProgressWheel:pwTextColor="@color/midBlack"
+            ProgressWheel:pwTextSize="14sp"
+            ProgressWheel:pwRimColor="@color/yellowPrimary"
+            ProgressWheel:pwBarLength="60dp"
+            ProgressWheel:pwBarColor="@color/bluePrimary"
+            ProgressWheel:pwBarWidth="5dp"
+            ProgressWheel:pwRimWidth="2dp"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

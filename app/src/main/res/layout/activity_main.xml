@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    tools:context="com.example.david.myapplication.MainActivity"
+    >
+
+
+    <fragment
+        android:id="@+id/toolBarFrag"
+        android:name="com.example.david.myapplication.ToolBarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_tool_bar" />
+
+    <fragment
+        android:id="@+id/progressWheelFrag"
+        android:name="com.example.david.myapplication.progressWheelFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolBarFrag"
+        tools:layout="@layout/fragment_progress_wheel" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gridBackground"
+        android:layout_below="@+id/progressWheelFrag">
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/gameboard_layout"
+            android:background="@drawable/cellborder">
+
+                <fragment
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:name="com.example.david.myapplication.GameBoard"
+                    android:id="@+id/gameboard_fragment"
+                    android:background="@drawable/cellborder"
+                    android:layout_gravity="center" />
+         </FrameLayout>
+    </FrameLayout>
+
+
+
+</RelativeLayout>
