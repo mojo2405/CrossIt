@@ -1,4 +1,4 @@
-package com.example.david.myapplication;
+package com.example.david.myapplication.GameBoard;
 
 
 import android.app.ActionBar;
@@ -10,11 +10,12 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import com.example.david.myapplication.R;
 
 /**
  * A simple {@link Fragment} subclass.

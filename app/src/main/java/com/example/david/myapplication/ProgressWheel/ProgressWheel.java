@@ -1,4 +1,4 @@
-package com.example.david.myapplication;
+package com.example.david.myapplication.ProgressWheel;
 
 /**
  * Created by Dror on 16/02/2016.
@@ -12,6 +12,8 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.example.david.myapplication.R;
 
 
 /**

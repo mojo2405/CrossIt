@@ -1,4 +1,4 @@
-package com.example.david.myapplication;
+package com.example.david.myapplication.GameBoard;
 
 import android.content.Context;
 import android.content.res.Configuration;

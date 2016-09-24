@@ -10,14 +10,14 @@
 
     <fragment
         android:id="@+id/toolBarFrag"
-        android:name="com.example.david.myapplication.ToolBarFragment"
+        android:name="com.example.david.myapplication.ToolBar.ToolBarFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout="@layout/fragment_tool_bar" />
 
     <fragment
         android:id="@+id/progressWheelFrag"
-        android:name="com.example.david.myapplication.progressWheelFragment"
+        android:name="com.example.david.myapplication.ProgressWheel.progressWheelFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolBarFrag"
@@ -39,7 +39,7 @@
                 <fragment
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:name="com.example.david.myapplication.GameBoard"
+                    android:name="com.example.david.myapplication.GameBoard.GameBoard"
                     android:id="@+id/gameboard_fragment"
                     android:background="@drawable/cellborder"
                     android:layout_gravity="center" />

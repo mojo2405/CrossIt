@@ -4,10 +4,9 @@
     android:layout_height="match_parent"
     android:id="@+id/toolBar"
     android:clipChildren="false"
-    tools:context=".ToolBarFragment">
+    tools:context=".ToolBar.ToolBarFragment">
 
 
-    <!-- TODO: Update blank fragment layout -->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,75 +15,25 @@
         android:clipChildren="false"
         android:background="@color/bluePrimary" >
 
-
-        <RelativeLayout
-        android:layout_width="130dp"
-        android:layout_height="45dp"
-            android:id="@+id/diamond_layout"
-        android:layout_gravity="center_horizontal|top"
-        android:background="@color/bluePrimary" >
-            <ImageView
-                android:layout_width="92dp"
-                android:layout_height="98dp"
-                android:src="@drawable/ribbon"
-                android:id="@+id/DiamondRibbon"
-                android:layout_marginStart="35dp"
-                 />
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/diamond"
-                android:id="@+id/DiamondSign"
-                android:layout_marginStart="15dp"
-                 />
-            <TextView
+        <fragment
+            android:name="com.example.david.myapplication.ToolBar.Points"
+            android:id="@+id/points_fragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView"
-                android:text="1234"
-            android:textColor="@color/abc_primary_text_material_dark"
-                android:layout_alignEnd="@+id/DiamondRibbon"
-                android:layout_toEndOf="@+id/DiamondSign"
-                android:layout_centerVertical="true"
-                />
+            tools:layout="@layout/fragment_points"
+            android:layout_gravity="center_horizontal|top"
+        />
 
-        </RelativeLayout>
-
-        <RelativeLayout
-        android:layout_width="130dp"
-        android:layout_height="45dp"
-        android:layout_gravity="center_horizontal|top"
-            android:layout_toEndOf="@+id/diamond_layout"
-            android:id="@+id/dollar_layout"
-        android:background="@color/bluePrimary" >
-            <ImageView
-            android:layout_width="92dp"
-            android:layout_height="98dp"
-            android:src="@drawable/ribbon"
-            android:id="@+id/DollarRibbon"
-                android:layout_marginStart="35dp"
+        <fragment
+            android:name="com.example.david.myapplication.ToolBar.Energy"
+            android:id="@+id/energy_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_toEndOf="@+id/points_fragment"
+            tools:layout="@layout/fragment_energy"
             />
 
-            <ImageView
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:src="@drawable/dollar"
-            android:id="@+id/DollarSign"
-                android:layout_marginStart="15dp"
-                android:paddingTop="2dp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView2"
-                android:text="1234"
-                android:textColor="@color/abc_primary_text_material_dark"
-                android:layout_alignEnd="@+id/DollarRibbon"
-                android:layout_toEndOf="@+id/DollarSign"
-                android:layout_centerVertical="true"
-                />
-
-        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"

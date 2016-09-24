@@ -8,4 +8,5 @@
     <color name="gridBackground">#f2fcfd</color>
     <color name="midBlack">#666666</color>
     <color name="whitesmoke">#eeeeee</color>
+    <color name="dimGrey">#646464</color>
 </resources>
