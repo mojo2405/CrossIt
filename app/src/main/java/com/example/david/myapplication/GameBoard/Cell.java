@@ -2,6 +2,7 @@ package com.example.david.myapplication.GameBoard;
 
 import android.app.ActionBar;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.david.myapplication.QuestionActivity;
 import com.example.david.myapplication.R;
 
 /**
@@ -24,7 +26,7 @@ class Cell extends TextView {
     private final static int ARROW_PADDING = 10;
     private final static int ARROW_SIZE = 20;
 
-    public Cell(Context context,int cellSize) {
+    public Cell(final Context context, int cellSize) {
         super(context);
         this.setTextColor(Color.BLACK);
         this.setWidth(cellSize);
@@ -37,13 +39,14 @@ class Cell extends TextView {
         this.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                context.startActivity(new Intent(context,QuestionActivity.class));
 //                        ((MainActivity) getActivity()).startCoinAnimation();
-                String q = getQuestion();
-                if (q != null){
-
-                }else{
-                    // TODO : did not press on question
-                }
+//                String q = getQuestion();
+//                if (q != null){
+//
+//                }else{
+//                    // TODO : did not press on question
+//                }
             }
         });
 
