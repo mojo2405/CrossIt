@@ -50,7 +50,7 @@ public class GameBoard extends Fragment {
         return (Cell) ((LinearLayout) v).getChildAt(0);
     }
 
-    public void setQuestion(int x, int y , String question, String answer,String arrowPos, String arrowDir){
+    public void setQuestion(int x, int y , String question, String answer,String arrowPos, String arrowDir, String arrowType){
         Cell arrowCell = null;
         Cell cell = getCell(x,y);
         cell.setQuestion(question);
@@ -62,14 +62,14 @@ public class GameBoard extends Fragment {
         else if (arrowPos.equals("Right") ){
             arrowCell = getCell(x,y+1);
         }
-        else if (arrowPos.equals("Up") ){
+        else if (arrowPos.equals("Top") ){
             arrowCell = getCell(x-1,y);
         }
-        else if (arrowPos.equals("Down") ){
+        else if (arrowPos.equals("Bottom") ){
             arrowCell = getCell(x+1,y);
         }
         if (arrowCell != null){
-            arrowCell.setArrow(arrowDir);
+            arrowCell.setArrow(arrowDir,arrowType);
         }
 
     }

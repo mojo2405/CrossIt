@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 String arrDir = jo_inside.getString("arrDir");
                 String arrPos = jo_inside.getString("arrPos");
 
-                game.setQuestion(Integer.parseInt(xPos),Integer.parseInt(yPos),question,answer,arrPos,arrDir);
+                game.setQuestion(Integer.parseInt(xPos),Integer.parseInt(yPos),question,answer,arrPos,arrDir,arrType);
             }
         } catch (JSONException e) {
             e.printStackTrace();

@@ -21,7 +21,8 @@ import com.example.david.myapplication.R;
 class Cell extends TextView {
     private String question;
     private String answer;
-    private static final int ARROW_SIZE = 30;
+    private final static int ARROW_PADDING = 10;
+    private final static int ARROW_SIZE = 20;
 
     public Cell(Context context,int cellSize) {
         super(context);
@@ -37,6 +38,12 @@ class Cell extends TextView {
             @Override
             public void onClick(View v) {
 //                        ((MainActivity) getActivity()).startCoinAnimation();
+                String q = getQuestion();
+                if (q != null){
+
+                }else{
+                    // TODO : did not press on question
+                }
             }
         });
 
@@ -64,35 +71,57 @@ class Cell extends TextView {
         this.setText(this.getQuestion());
     }
 
-    public void setArrow(String direction){
-
-        if (direction.equals("Left")){
-            Drawable image = this.getContext().getResources().getDrawable( R.drawable.arrow_left );
-            Bitmap bitmap = ((BitmapDrawable) image).getBitmap();
-            // Scale it to 30 x 30
-            Drawable d = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, ARROW_SIZE, ARROW_SIZE, true));
-            this.setCompoundDrawablesWithIntrinsicBounds(null, null, d, null);
-        }
-        else if (direction.equals("Right")){
-            Drawable image = this.getContext().getResources().getDrawable( R.drawable.arrow_right );
-            Bitmap bitmap = ((BitmapDrawable) image).getBitmap();
-            // Scale it to 30 x 30
-            Drawable d = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, ARROW_SIZE, ARROW_SIZE, true));
-            this.setCompoundDrawablesWithIntrinsicBounds(d, null, null, null);
-        }
-        else if (direction.equals("Up")){
-            Drawable image = this.getContext().getResources().getDrawable( R.drawable.arrow_up );
-            Bitmap bitmap = ((BitmapDrawable) image).getBitmap();
-            // Scale it to 30 x 30
-            Drawable d = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, ARROW_SIZE, ARROW_SIZE, true));
-            this.setCompoundDrawablesWithIntrinsicBounds(null, null, null, d);
-        }
-        else if (direction.equals("Down")){
-            Drawable image = this.getContext().getResources().getDrawable( R.drawable.arrow_down );
-            Bitmap bitmap = ((BitmapDrawable) image).getBitmap();
-            // Scale it to 30 x 30
-            Drawable d = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, ARROW_SIZE, ARROW_SIZE, true));
-            this.setCompoundDrawablesWithIntrinsicBounds(null, d, null, null);
+    public void setArrow(String direction,String arrowType){
+        Drawable icon = null ;
+        switch (arrowType) {
+            case "LeftLeft":
+                icon = getContext().getResources().getDrawable(
+                        R.drawable.arrow_left,null);
+                icon = resize(icon);
+                this.setPadding(0,0,ARROW_PADDING,0);
+                this.setCompoundDrawablesWithIntrinsicBounds(
+                        null, null, icon, null);
+                break;
+            case "BottomDown":
+                icon = getContext().getResources().getDrawable(
+                        R.drawable.arrow_down,null);
+                icon = resize(icon);
+                this.setPadding(0,ARROW_PADDING,0,0);
+                this.setCompoundDrawablesWithIntrinsicBounds(
+                        null, icon, null, null);
+                break;
+            case "RightDown":
+                icon = getContext().getResources().getDrawable(
+                        R.drawable.arrow_right_down,null);
+                icon = resize(icon);
+                this.setPadding(ARROW_PADDING,0,0,0);
+                this.setCompoundDrawablesWithIntrinsicBounds(
+                        icon, null, null, null);
+                break;
+            case "BottomLeft":
+                icon = getContext().getResources().getDrawable(
+                        R.drawable.arrow_down_left,null);
+                icon = resize(icon);
+                this.setPadding(0,ARROW_PADDING,0,0);
+                this.setCompoundDrawablesWithIntrinsicBounds(
+                        null, icon, null, null);
+                break;
+            case "TopLeft":
+                icon = getContext().getResources().getDrawable(
+                        R.drawable.arrow_up_left,null);
+                icon = resize(icon);
+                this.setPadding(0,0,0,ARROW_PADDING);
+                this.setCompoundDrawablesWithIntrinsicBounds(
+                        null, null, null, icon);
+                break;
         }
     }
+
+
+    private Drawable resize(Drawable image) {
+        Bitmap b = ((BitmapDrawable)image).getBitmap();
+        Bitmap bitmapResized = Bitmap.createScaledBitmap(b, ARROW_SIZE, ARROW_SIZE, false);
+        return new BitmapDrawable(getResources(), bitmapResized);
+    }
+
 }
