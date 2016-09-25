@@ -1,9 +1,8 @@
-package com.example.david.myapplication.ToolBar;
+package com.example.david.CrossIt.ToolBar;
 
 
 import android.app.Fragment;
 import android.graphics.Path;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.PathShape;
@@ -14,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.david.myapplication.R;
+import com.example.david.CrossIt.R;
 
 
 /**

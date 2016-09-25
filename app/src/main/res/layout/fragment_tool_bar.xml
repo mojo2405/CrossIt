@@ -16,7 +16,7 @@
         android:background="@color/bluePrimary" >
 
         <fragment
-            android:name="com.example.david.myapplication.ToolBar.Points"
+            android:name="com.example.david.CrossIt.ToolBar.Points"
             android:id="@+id/points_fragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         />
 
         <fragment
-            android:name="com.example.david.myapplication.ToolBar.Energy"
+            android:name="com.example.david.CrossIt.ToolBar.Energy"
             android:id="@+id/energy_fragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,13 +34,25 @@
             tools:layout="@layout/fragment_energy"
             />
 
+        <fragment
+            android:name="com.example.david.CrossIt.UserInfo.FacebookFragment"
+            android:id="@+id/fb_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_facebook"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginLeft="8dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/menuLayout" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toEndOf="@+id/dollar_layout"
             android:clipChildren="false"
-            android:id="@+id/menuLayout">
+            android:id="@+id/menuLayout"
+            android:layout_width="45dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,7 +63,10 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:clickable="true" />
+
+
         </RelativeLayout>
+
 
     </RelativeLayout>
 

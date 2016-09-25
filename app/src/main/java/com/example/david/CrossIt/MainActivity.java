@@ -1,12 +1,12 @@
-package com.example.david.myapplication;
+package com.example.david.CrossIt;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.example.david.myapplication.GameBoard.GameBoard;
-import com.example.david.myapplication.ToolBar.Energy;
-import com.example.david.myapplication.ToolBar.Points;
+import com.example.david.CrossIt.GameBoard.GameBoard;
+import com.example.david.CrossIt.ToolBar.Energy;
+import com.example.david.CrossIt.ToolBar.Points;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,6 +16,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Facebook
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
+
         setContentView(R.layout.activity_main);
 
         game = (GameBoard) getFragmentManager().findFragmentById(R.id.gameboard_fragment);

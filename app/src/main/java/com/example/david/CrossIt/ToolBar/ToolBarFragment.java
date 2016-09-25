@@ -1,4 +1,4 @@
-package com.example.david.myapplication.ToolBar;
+package com.example.david.CrossIt.ToolBar;
 
 
 import android.os.Bundle;
@@ -8,10 +8,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.example.david.myapplication.R;
+import com.example.david.CrossIt.R;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+
+import java.util.Arrays;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,8 +29,10 @@ import com.example.david.myapplication.R;
 public class ToolBarFragment extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_tool_bar, container, false);
 

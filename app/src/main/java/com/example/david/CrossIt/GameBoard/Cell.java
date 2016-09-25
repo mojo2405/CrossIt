@@ -1,4 +1,4 @@
-package com.example.david.myapplication.GameBoard;
+package com.example.david.CrossIt.GameBoard;
 
 import android.app.ActionBar;
 import android.content.Context;
@@ -13,8 +13,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.david.myapplication.QuestionActivity;
-import com.example.david.myapplication.R;
+import com.example.david.CrossIt.QuestionActivity;
+import com.example.david.CrossIt.R;
 
 /**
  * Created by David on 24/09/2016.
@@ -39,7 +39,11 @@ class Cell extends TextView {
         this.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context,QuestionActivity.class));
+                Intent intent = new Intent(context, QuestionActivity.class);
+                intent.putExtra("question", getQuestion());
+                intent.putExtra("answer", getAnswer());
+                context.startActivity(intent);
+//                context.startActivity(new Intent(context,QuestionActivity.class));
 //                        ((MainActivity) getActivity()).startCoinAnimation();
 //                String q = getQuestion();
 //                if (q != null){

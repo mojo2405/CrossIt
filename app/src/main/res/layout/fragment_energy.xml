@@ -5,7 +5,7 @@
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.david.myapplication.ToolBar.Energy"
+    tools:context="com.example.david.CrossIt.ToolBar.Energy"
 
     android:layout_width="130dp"
     android:layout_height="45dp"

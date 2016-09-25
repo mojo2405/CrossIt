@@ -1,4 +1,4 @@
-package com.example.david.myapplication.GameBoard;
+package com.example.david.CrossIt.GameBoard;
 
 import android.content.Context;
 import android.content.res.Configuration;

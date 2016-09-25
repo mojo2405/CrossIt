@@ -1,4 +1,4 @@
-package com.example.david.myapplication.ProgressWheel;
+package com.example.david.CrossIt.ProgressWheel;
 
 /**
  * Created by Dror on 16/02/2016.
@@ -13,7 +13,7 @@ import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.example.david.myapplication.R;
+import com.example.david.CrossIt.R;
 
 
 /**

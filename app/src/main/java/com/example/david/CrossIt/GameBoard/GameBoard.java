@@ -1,14 +1,11 @@
-package com.example.david.myapplication.GameBoard;
+package com.example.david.CrossIt.GameBoard;
 
 
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +13,8 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
 
-import com.example.david.myapplication.R;
+import com.example.david.CrossIt.R;
 
 /**
  * A simple {@link Fragment} subclass.

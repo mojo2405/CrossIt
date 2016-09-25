@@ -1,4 +1,4 @@
-package com.example.david.myapplication;
+package com.example.david.CrossIt;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

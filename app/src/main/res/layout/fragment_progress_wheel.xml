@@ -28,7 +28,7 @@
     <View style="@style/Divider"
         android:id="@+id/viewDivider" />
 
-        <com.example.david.myapplication.ProgressWheel.ProgressWheel
+        <com.example.david.CrossIt.ProgressWheel.ProgressWheel
             android:id="@+id/pw_spinner"
             android:layout_width="50dp"
             android:layout_height="50dp"

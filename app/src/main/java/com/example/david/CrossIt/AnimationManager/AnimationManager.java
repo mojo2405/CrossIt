@@ -1,4 +1,4 @@
-package com.example.david.myapplication.AnimationManager;
+package com.example.david.CrossIt.AnimationManager;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.example.david.myapplication.R;
+import com.example.david.CrossIt.R;
 
 /**
  * Created by Dror on 09/02/2016.

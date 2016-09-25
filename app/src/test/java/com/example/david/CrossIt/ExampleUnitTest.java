@@ -1,4 +1,4 @@
-package com.example.david.myapplication;
+package com.example.david.CrossIt;
 
 import org.junit.Test;
 
