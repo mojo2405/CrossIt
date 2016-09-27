@@ -32,7 +32,7 @@ public class AnswerCell extends EditText{
         this.setBackgroundResource(R.color.answerCellBackground);
         this.setHeight(cell_size);
         this.setWidth(cell_size);
-        this.setFilters(new InputFilter[] {new InputFilter.LengthFilter(1)});
+//        this.setFilters(new InputFilter[] {new InputFilter.LengthFilter(1)});
         this.setCursorVisible(false);
         this.setGravity(Gravity.CENTER);
 

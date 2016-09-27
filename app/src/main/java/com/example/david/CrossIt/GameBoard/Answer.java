@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.text.Editable;
 import android.text.InputFilter;
+import android.text.Selection;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
@@ -79,24 +80,23 @@ public class Answer {
         ac.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Log.d("test","test");
+
             }
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count,
                                           int after) {
-                Log.d("test","test");
 
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                String outputedText = s.toString();
-                // Unregister self before setText
-//                ac.removeTextChangedListener(this);
-//                ac.setText(s.toString());
-                // Re-register self after setText
-//                ac.addTextChangedListener(this);
+                String newText = s.toString();
+                int iLen=s.length();
+                if (iLen>1){
+                    String t = newText.substring(0, 1);
+                    ac.setText(t);
+                }
                 goToNextAvailableCell();
             }
         });
