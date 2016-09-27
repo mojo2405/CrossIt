@@ -9,6 +9,9 @@
     <color name="midBlack">#666666</color>
     <color name="whitesmoke">#eeeeee</color>
     <color name="dimGrey">#646464</color>
+    <color name="borderGray">#8c8d8e</color>
     <color name="yellowGradientStart">#ffba16</color>
     <color name="yellowGradientEnd">#efa903</color>
+    <color name="answerCellBackground">#dedfe1</color>
+    <color name="white">#ffffff</color>
 </resources>

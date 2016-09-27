@@ -1,4 +1,4 @@
-package com.example.david.CrossIt.GameBoard;
+package com.example.david.CrossIt.Keyboards;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import com.example.david.CrossIt.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class QuestionFragment extends Fragment {
+public class HebrewKeyboard extends Fragment {
 
 
-    public QuestionFragment() {
+    public HebrewKeyboard() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class QuestionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_question, container, false);
+        return inflater.inflate(R.layout.fragment_hebrew_keyboard, container, false);
     }
 
 }

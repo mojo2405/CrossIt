@@ -33,24 +33,20 @@ class Cell extends TextView {
         this.setHeight(cellSize);
         this.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
         this.setSingleLine(false);
-        this.setMaxLines(3);
+        this.setMaxLines(1);
         this.setBackgroundResource(R.drawable.cellborder);
-        this.setTextSize(8);
         this.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, QuestionActivity.class);
-                intent.putExtra("question", getQuestion());
-                intent.putExtra("answer", getAnswer());
-                context.startActivity(intent);
-//                context.startActivity(new Intent(context,QuestionActivity.class));
-//                        ((MainActivity) getActivity()).startCoinAnimation();
-//                String q = getQuestion();
-//                if (q != null){
-//
-//                }else{
-//                    // TODO : did not press on question
-//                }
+                String q = getQuestion();
+                if (q != null){
+                    Intent intent = new Intent(context, QuestionActivity.class);
+                    intent.putExtra("question", getQuestion());
+                    intent.putExtra("answer", getAnswer());
+                    context.startActivity(intent);
+                }else{
+                    // TODO : did not press on question
+                }
             }
         });
 
@@ -74,6 +70,8 @@ class Cell extends TextView {
     }
 
     public void setQuestion(String question) {
+        this.setMaxLines(3);
+        this.setTextSize(8);
         this.question = question;
         this.setText(this.getQuestion());
     }

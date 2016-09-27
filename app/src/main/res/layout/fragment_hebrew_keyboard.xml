@@ -1,0 +1,275 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    tools:context="com.example.david.CrossIt.Keyboards.HebrewKeyboard">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/keyboard1row"
+            android:gravity="center_vertical|center_horizontal">
+
+            <Button
+                android:text=">"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/delete"
+                style="@style/KeyboardButton"
+                 />
+
+            <Button
+                android:text="פ"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button1"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/delete" />
+
+            <Button
+                android:text="ם"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button2"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button1" />
+
+            <Button
+                android:text="ן"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button3"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button2" />
+
+            <Button
+                android:text="ו"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button4"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button3" />
+
+            <Button
+                android:text="ט"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button5"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button4" />
+
+            <Button
+                android:text="א"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button6"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button5" />
+
+            <Button
+                android:text="ר"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button7"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button6" />
+
+            <Button
+                android:text="ק"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button8"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button7"
+                 />
+
+
+        </RelativeLayout>
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/keyboard2row"
+            android:layout_below="@+id/keyboard1row"
+            android:gravity="center_vertical|center_horizontal">
+
+            <Button
+                android:text="ף"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button9"
+                style="@style/KeyboardButton"
+                />
+
+            <Button
+                android:text="ך"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button10"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button9" />
+
+            <Button
+                android:text="ל"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button11"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button10" />
+
+            <Button
+                android:text="ח"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button12"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button11" />
+
+            <Button
+                android:text="י"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button13"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button12" />
+
+            <Button
+                android:text="ע"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button14"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button13" />
+
+            <Button
+                android:text="כ"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button15"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button14" />
+
+            <Button
+                android:text="ג"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button16"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button15" />
+
+            <Button
+                android:text="ד"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button17"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button16"
+                />
+            <Button
+                android:text="ש"
+                android:layout_width="@dimen/KeyboardButtonHeight"
+                android:layout_height="@dimen/KeyboardButtonHeight"
+                android:id="@+id/button18"
+                style="@style/KeyboardButton"
+                android:layout_toStartOf="@+id/button17"
+                />
+
+        </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/keyboard3row"
+                android:layout_below="@+id/keyboard2row"
+                android:gravity="center_vertical|center_horizontal">
+
+                <Button
+                    android:text="ץ"
+                    android:layout_width="@dimen/KeyboardButtonHeight"
+                    android:layout_height="@dimen/KeyboardButtonHeight"
+                    android:id="@+id/button19"
+                    style="@style/KeyboardButton"
+                    />
+
+                <Button
+                    android:text="ת"
+                    android:layout_width="@dimen/KeyboardButtonHeight"
+                    android:layout_height="@dimen/KeyboardButtonHeight"
+                    android:id="@+id/button20"
+                    style="@style/KeyboardButton"
+                    android:layout_toStartOf="@+id/button19" />
+
+                <Button
+                    android:text="צ"
+                    android:layout_width="@dimen/KeyboardButtonHeight"
+                    android:layout_height="@dimen/KeyboardButtonHeight"
+                    android:id="@+id/button21"
+                    style="@style/KeyboardButton"
+                    android:layout_toStartOf="@+id/button20" />
+
+                <Button
+                    android:text="מ"
+                    android:layout_width="@dimen/KeyboardButtonHeight"
+                    android:layout_height="@dimen/KeyboardButtonHeight"
+                    android:id="@+id/button22"
+                    style="@style/KeyboardButton"
+                    android:layout_toStartOf="@+id/button21" />
+
+                <Button
+                    android:text="נ"
+                    android:layout_width="@dimen/KeyboardButtonHeight"
+                    android:layout_height="@dimen/KeyboardButtonHeight"
+                    android:id="@+id/button23"
+                    style="@style/KeyboardButton"
+                    android:layout_toStartOf="@+id/button22" />
+
+                <Button
+                    android:text="ה"
+                    android:layout_width="@dimen/KeyboardButtonHeight"
+                    android:layout_height="@dimen/KeyboardButtonHeight"
+                    android:id="@+id/button24"
+                    style="@style/KeyboardButton"
+                    android:layout_toStartOf="@+id/button23" />
+
+                <Button
+                    android:text="ב"
+                    android:layout_width="@dimen/KeyboardButtonHeight"
+                    android:layout_height="@dimen/KeyboardButtonHeight"
+                    android:id="@+id/button25"
+                    style="@style/KeyboardButton"
+                    android:layout_toStartOf="@+id/button24" />
+
+                <Button
+                    android:text="ס"
+                    android:layout_width="@dimen/KeyboardButtonHeight"
+                    android:layout_height="@dimen/KeyboardButtonHeight"
+                    android:id="@+id/button26"
+                    style="@style/KeyboardButton"
+                    android:layout_toStartOf="@+id/button25" />
+
+                <Button
+                    android:text="ז"
+                    android:layout_width="@dimen/KeyboardButtonHeight"
+                    android:layout_height="@dimen/KeyboardButtonHeight"
+                    android:id="@+id/button27"
+                    style="@style/KeyboardButton"
+                    android:layout_toStartOf="@+id/button26"
+                    />
+
+            </RelativeLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

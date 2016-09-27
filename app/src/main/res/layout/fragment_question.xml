@@ -3,15 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/question_frame"
-    tools:context=".GameBoard.QuestionFragment">
+    tools:context="com.example.david.CrossIt.QuestionActivity"
+    android:background="@color/gridBackground">
 
     <!-- TODO: Update blank fragment layout -->
 
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:minHeight="300dp"
-        android:layout_margin="50dp"
+        android:layout_height="500dp"
+        android:layout_margin="0dp"
+        android:background="@drawable/shadow_11324"
         >
 
 
@@ -23,15 +25,16 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:id="@+id/questionLayout"
-            android:layout_marginTop="21dp"></LinearLayout>
+            android:layout_marginTop="21dp">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@+id/questionLayout"
-            android:id="@+id/answerLayout"
-            android:layout_alignParentStart="true"></LinearLayout>
+            <TextView
+                android:text="Question Here"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/questionTextView"
+                android:textAlignment="center"
+                android:textSize="@dimen/question_size" />
+        </LinearLayout>
 
         <Button
             android:text="רמז"
@@ -40,10 +43,22 @@
             android:id="@+id/hint_nutton"
             android:background="@drawable/hint_button_gradient"
             android:textColor="@android:color/background_light"
-            android:layout_marginBottom="17dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/answerLayout"
+            android:layout_marginTop="19dp"/>
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/answerLayout"
+            android:layout_below="@+id/questionLayout"
+
+            android:layout_alignParentStart="true" >
+
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
-
 </FrameLayout>
