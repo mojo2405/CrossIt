@@ -1,8 +1,8 @@
 package com.example.david.CrossIt.GameBoard;
 
 import android.app.ActionBar;
+import android.app.Fragment;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -13,21 +13,27 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.david.CrossIt.QuestionActivity;
+import com.example.david.CrossIt.GameBoard.QuestionDialog.QuestionFragment;
 import com.example.david.CrossIt.R;
 
 /**
  * Created by David on 24/09/2016.
  */
 
-class Cell extends TextView {
+public class GridCell extends TextView {
     private String question;
     private String answer;
     private final static int ARROW_PADDING = 10;
     private final static int ARROW_SIZE = 20;
+    private String arrowType;
+    public int x;
+    public int y;
 
-    public Cell(final Context context, int cellSize) {
+    public GridCell(final Context context, int cellSize, int x , int y) {
         super(context);
+        this.x = x;
+        this.y = y;
+        
         this.setTextColor(Color.BLACK);
         this.setWidth(cellSize);
         this.setHeight(cellSize);
@@ -35,21 +41,6 @@ class Cell extends TextView {
         this.setSingleLine(false);
         this.setMaxLines(1);
         this.setBackgroundResource(R.drawable.cellborder);
-        this.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String q = getQuestion();
-                if (q != null){
-                    Intent intent = new Intent(context, QuestionActivity.class);
-                    intent.putExtra("question", getQuestion());
-                    intent.putExtra("answer", getAnswer());
-                    context.startActivity(intent);
-                }else{
-                    // TODO : did not press on question
-                }
-            }
-        });
-
         Typeface type = Typeface.createFromAsset(getContext().getAssets(),"fonts/OpenSansHebrew-Regular.ttf");
         this.setTypeface(type);
 
@@ -76,14 +67,24 @@ class Cell extends TextView {
         this.setText(this.getQuestion());
     }
 
-    public void setArrow(String direction,String arrowType){
-        Drawable icon = null ;
+    public void setArrow(String arrowType){
+        this.arrowType = arrowType;
+    }
+
+    public String getArrow(){
+        return this.arrowType;
+    }
+
+    public void drawArrow(String arrowType){
+        Drawable icon = null;
+
         switch (arrowType) {
             case "LeftLeft":
                 icon = getContext().getResources().getDrawable(
                         R.drawable.arrow_left,null);
                 icon = resize(icon);
                 this.setPadding(0,0,ARROW_PADDING,0);
+
                 this.setCompoundDrawablesWithIntrinsicBounds(
                         null, null, icon, null);
                 break;
@@ -128,5 +129,6 @@ class Cell extends TextView {
         Bitmap bitmapResized = Bitmap.createScaledBitmap(b, ARROW_SIZE, ARROW_SIZE, false);
         return new BitmapDrawable(getResources(), bitmapResized);
     }
+
 
 }

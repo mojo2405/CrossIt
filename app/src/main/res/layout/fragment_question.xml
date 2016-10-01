@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/question_frame"
-    tools:context="com.example.david.CrossIt.QuestionActivity"
+    tools:context="com.example.david.CrossIt.GameBoard.QuestionDialog.QuestionFragment"
     android:background="@color/gridBackground">
 
     <!-- TODO: Update blank fragment layout -->
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:layout_margin="0dp"
-        android:background="@drawable/shadow_11324"
+
         >
 
 

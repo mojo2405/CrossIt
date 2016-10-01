@@ -13,7 +13,10 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
+import com.example.david.CrossIt.GameBoard.QuestionDialog.QuestionFragment;
+import com.example.david.CrossIt.GameBoard.Zoom.ZoomViewContainer;
 import com.example.david.CrossIt.R;
 
 /**
@@ -21,10 +24,11 @@ import com.example.david.CrossIt.R;
  */
 public class GameBoard extends Fragment {
 
+    private static TableLayout tableLayout;
     View v;
     ZoomViewContainer zoomViewContainer;
     TableLayout tableView;
-    TableLayout tableLayout;
+    public static GridCell selectedGridCell;
 
     public GameBoard() {
         // Required empty public constructor
@@ -34,38 +38,38 @@ public class GameBoard extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater,container,savedInstanceState);
         zoomViewContainer = new ZoomViewContainer(getActivity(), createGameTable(8,8));
-//        zoomViewContainer.setPadding(10, 10, 10, 10);
         v = zoomViewContainer;
-//        AnimationManager.StartAnimation(getActivity(),v,R.animator.flipping);
 
         return v;
     }
-    public Cell getCell(int x, int y ){
+
+    public static GridCell getCell(int x, int y){
         TableRow row = (TableRow) tableLayout.getChildAt(x);
         View v = row.getChildAt(y);
-        return (Cell) ((LinearLayout) v).getChildAt(0);
+        return (GridCell) ((LinearLayout) v).getChildAt(0);
     }
 
-    public void setQuestion(int x, int y , String question, String answer,String arrowPos, String arrowDir, String arrowType){
-        Cell arrowCell = null;
-        Cell cell = getCell(x,y);
-        cell.setQuestion(question);
-        cell.setAnswer(answer);
+    public static void setQuestion(int x, int y , String question, String answer,String arrowPos, String arrowDir, String arrowType){
+        GridCell arrowGridCell = null;
+        GridCell gridCell = getCell(x,y);
+        gridCell.setQuestion(question);
+        gridCell.setAnswer(answer);
+        gridCell.setArrow(arrowType);
 
         if (arrowPos.equals("Left") ){
-            arrowCell = getCell(x,y-1);
+            arrowGridCell = getCell(x,y-1);
         }
         else if (arrowPos.equals("Right") ){
-            arrowCell = getCell(x,y+1);
+            arrowGridCell = getCell(x,y+1);
         }
         else if (arrowPos.equals("Top") ){
-            arrowCell = getCell(x-1,y);
+            arrowGridCell = getCell(x-1,y);
         }
         else if (arrowPos.equals("Bottom") ){
-            arrowCell = getCell(x+1,y);
+            arrowGridCell = getCell(x+1,y);
         }
-        if (arrowCell != null){
-            arrowCell.setArrow(arrowDir,arrowType);
+        if (arrowGridCell != null){
+            arrowGridCell.drawArrow(arrowType);
         }
 
     }
@@ -85,19 +89,29 @@ public class GameBoard extends Fragment {
         float screenHeight = metrics.widthPixels;
 
         int maxCellWidth = (int) (screenWidth / columnCount) - 10;
-     //   tableLayout.setStretchAllColumns(true);
 
         for (int y = 0; y < rowCount; y++) {
 
             TableRow tableRow = new TableRow(getActivity());
             for (int x= 0; x < columnCount; x++) {
 
-//                final TextView crossCellTextView = new TextView(getActivity());
-                Cell crossCellTextView = new Cell(this.getContext(),maxCellWidth);
-
+                final GridCell crossGridCellTextView = new GridCell(this.getContext(),maxCellWidth,y,x);
+                crossGridCellTextView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String q = crossGridCellTextView.getQuestion();
+                            if (q != null) {
+                                QuestionFragment fragInfo = new QuestionFragment();
+                                selectedGridCell = crossGridCellTextView;
+                                fragInfo.show(getFragmentManager(),"question");
+                            }else{
+                                // TODO : did not press on question
+                            }
+                        }
+                });
                 LinearLayout linearLayout = new LinearLayout(getActivity());
                 linearLayout.setBackgroundResource(R.drawable.textview_style);
-                linearLayout.addView(crossCellTextView);
+                linearLayout.addView(crossGridCellTextView);
 
                 TableRow.LayoutParams tableRowParams = new TableRow.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT, 1f);
 
@@ -110,6 +124,56 @@ public class GameBoard extends Fragment {
         tableLayout.setPadding(1,1,8,8);
         //tableLayout.setBackgroundResource(R.drawable.shadow);
         return tableLayout;
+    }
+
+
+
+    public static TextView[] getCorrespondingTextView(GridCell cell){
+        int start_x = cell.x;
+        int start_y = cell.y;
+
+        int answer_length = cell.getAnswer().length();
+        TextView[] tv = new TextView[answer_length];
+
+
+        switch (cell.getArrow()) {
+            case "LeftLeft":
+                start_y--;
+                for (int i = 0 ; i < answer_length;i++){
+                    tv[i] = GameBoard.getCell(start_x,start_y);
+                    start_y--;
+                }
+                break;
+            case "BottomDown":
+                start_x++;
+                for (int i = 0 ; i < answer_length;i++){
+                    tv[i] = GameBoard.getCell(start_x,start_y);
+                    start_x++;
+                }
+                break;
+            case "RightDown":
+                start_y++;
+                for (int i = 0 ; i < answer_length;i++){
+                    tv[i] = GameBoard.getCell(start_x,start_y);
+                    start_x++;
+                }
+                break;
+            case "BottomLeft":
+                start_x++;
+                for (int i = 0 ; i < answer_length;i++){
+                    tv[i] = GameBoard.getCell(start_x,start_y);
+                    start_y--;
+                }
+                break;
+            case "TopLeft":
+                start_x--;
+                for (int i = 0 ; i < answer_length;i++){
+                    tv[i] = GameBoard.getCell(start_x,start_y);
+                    start_y--;
+                }
+                break;
+        }
+        return tv;
     }
 
 }

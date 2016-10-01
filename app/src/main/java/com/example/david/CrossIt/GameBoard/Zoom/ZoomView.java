@@ -1,4 +1,4 @@
-package com.example.david.CrossIt.GameBoard;
+package com.example.david.CrossIt.GameBoard.Zoom;
 
 import android.content.Context;
 import android.graphics.Bitmap;

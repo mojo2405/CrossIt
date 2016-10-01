@@ -1,4 +1,4 @@
-package com.example.david.CrossIt.GameBoard;
+package com.example.david.CrossIt.GameBoard.QuestionDialog;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -25,14 +25,13 @@ import static android.R.attr.fragment;
 public class AnswerCell extends EditText{
 
 
-    public AnswerCell(final Context context, int cell_size) {
-        super(context);
+    public AnswerCell(View v, int cell_size) {
+        super(v.getContext());
 
         this.setId(View.generateViewId());
         this.setBackgroundResource(R.color.answerCellBackground);
         this.setHeight(cell_size);
         this.setWidth(cell_size);
-//        this.setFilters(new InputFilter[] {new InputFilter.LengthFilter(1)});
         this.setCursorVisible(false);
         this.setGravity(Gravity.CENTER);
 
