@@ -6,9 +6,6 @@
     tools:context="com.example.david.CrossIt.GameBoard.QuestionDialog.QuestionFragment"
     android:background="@color/gridBackground">
 
-    <!-- TODO: Update blank fragment layout -->
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="500dp"

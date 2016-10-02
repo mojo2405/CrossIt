@@ -1,6 +1,10 @@
 package com.example.david.CrossIt.ToolBar;
 
 
+import android.animation.AnimatorSet;
+import android.animation.TypeEvaluator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.Fragment;
 import android.graphics.Path;
 import android.graphics.drawable.Drawable;
@@ -10,10 +14,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.david.CrossIt.AnimationManager.AnimationManager;
 import com.example.david.CrossIt.R;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 
 /**
@@ -24,14 +35,39 @@ public class Points extends Fragment {
     View v;
     TextView txtPoints;
     ImageView imgPoints;
+    Animation animFadein;
+
     public Points() {
         // Required empty public constructor
 
     }
 
-    public void addCoins(int amountToAdd)
+    public void addPoints(int amountToAdd)
     {
-        txtPoints.setText(" "+ String.valueOf(amountToAdd));
+        int points = getPoints() + amountToAdd;
+        //Animate diamond
+        imgPoints.startAnimation(animFadein);
+
+        //Animate numbers
+        ValueAnimator animator = new ValueAnimator();
+        animator.setObjectValues(getPoints(), points);
+        animator.addUpdateListener(new AnimatorUpdateListener() {
+            public void onAnimationUpdate(ValueAnimator animation) {
+                txtPoints.setText(String.valueOf(animation.getAnimatedValue()));
+            }
+        });
+        animator.setEvaluator(new TypeEvaluator<Integer>() {
+            public Integer evaluate(float fraction, Integer startValue, Integer endValue) {
+                return Math.round(startValue + (endValue - startValue) * fraction);
+            }
+        });
+        animator.setDuration(1000);
+        animator.start();
+
+    }
+
+    public int getPoints(){
+        return  Integer.parseInt(txtPoints.getText().toString());
     }
 
     public void RemoveCoins(int amount)
@@ -51,7 +87,7 @@ public class Points extends Fragment {
             @Override
             public void onClick(View v) {
                 int randomNum = 0 + (int) (Math.random() * 10000000);
-                addCoins(randomNum);
+                addPoints(randomNum);
                 //AnimationManager.ShowMsg(getActivity(),"Coin Click"+txtPoints.getPivotY()+"-"+txtPoints.getY());
             }
         });
@@ -60,6 +96,10 @@ public class Points extends Fragment {
 
        // StartAnimation(imgCoins);
        // StartAnimation(txtPoints);
+
+        // load the animation
+        animFadein = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.bounce);
         return v;
     }
 

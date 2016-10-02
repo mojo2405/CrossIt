@@ -5,8 +5,6 @@
     android:layout_marginTop="15dp"
     tools:context="com.example.david.CrossIt.Keyboards.HebrewKeyboard">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

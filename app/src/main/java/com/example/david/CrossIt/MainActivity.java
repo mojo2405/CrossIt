@@ -22,8 +22,8 @@ import com.facebook.appevents.AppEventsLogger;
 public class MainActivity extends AppCompatActivity {
 
     private GameBoard game;
-    private Points points;
-    private Energy energy;
+    private static Points points;
+    private static Energy energy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,4 +84,10 @@ public class MainActivity extends AppCompatActivity {
         }
         return json;
     }
+
+    public static Points getPoints() {
+        return points;
+    }
+
+
 }

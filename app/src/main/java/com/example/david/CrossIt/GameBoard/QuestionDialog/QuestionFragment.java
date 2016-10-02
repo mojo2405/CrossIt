@@ -23,7 +23,9 @@ import android.widget.TextView;
 import com.example.david.CrossIt.AnimationManager.AnimationManager;
 import com.example.david.CrossIt.GameBoard.GameBoard;
 import com.example.david.CrossIt.GameBoard.GridCell;
+import com.example.david.CrossIt.MainActivity;
 import com.example.david.CrossIt.R;
+import com.example.david.CrossIt.ToolBar.Points;
 import com.facebook.FacebookSdk;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
@@ -46,7 +48,7 @@ public class QuestionFragment extends DialogFragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FacebookSdk.sdkInitialize(getApplicationContext());
 
@@ -188,6 +190,7 @@ public class QuestionFragment extends DialogFragment {
         cell.setOnClickListener(null);
         // TODO : Cool correct animation
         // TODO : Add points
+        MainActivity.getPoints().addPoints(150);
         // TODO : progress wheel advance
     }
 

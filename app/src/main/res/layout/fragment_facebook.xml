@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     tools:context=".UserInfo.FacebookFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
