@@ -77,14 +77,15 @@ public class GridCell extends TextView {
 
     public void drawArrow(String arrowType){
         Drawable icon = null;
+        int padding = ARROW_SIZE + ARROW_PADDING;
+        this.setPadding(ARROW_PADDING,ARROW_PADDING,ARROW_PADDING,ARROW_PADDING);
+        this.setCompoundDrawablePadding(-padding);
 
         switch (arrowType) {
             case "LeftLeft":
                 icon = getContext().getResources().getDrawable(
                         R.drawable.arrow_left,null);
                 icon = resize(icon);
-                this.setPadding(0,0,ARROW_PADDING,0);
-
                 this.setCompoundDrawablesWithIntrinsicBounds(
                         null, null, icon, null);
                 break;
@@ -92,7 +93,6 @@ public class GridCell extends TextView {
                 icon = getContext().getResources().getDrawable(
                         R.drawable.arrow_down,null);
                 icon = resize(icon);
-                this.setPadding(0,ARROW_PADDING,0,0);
                 this.setCompoundDrawablesWithIntrinsicBounds(
                         null, icon, null, null);
                 break;
@@ -100,7 +100,6 @@ public class GridCell extends TextView {
                 icon = getContext().getResources().getDrawable(
                         R.drawable.arrow_right_down,null);
                 icon = resize(icon);
-                this.setPadding(ARROW_PADDING,0,0,0);
                 this.setCompoundDrawablesWithIntrinsicBounds(
                         icon, null, null, null);
                 break;
@@ -108,7 +107,6 @@ public class GridCell extends TextView {
                 icon = getContext().getResources().getDrawable(
                         R.drawable.arrow_down_left,null);
                 icon = resize(icon);
-                this.setPadding(0,ARROW_PADDING,0,0);
                 this.setCompoundDrawablesWithIntrinsicBounds(
                         null, icon, null, null);
                 break;
@@ -116,7 +114,6 @@ public class GridCell extends TextView {
                 icon = getContext().getResources().getDrawable(
                         R.drawable.arrow_up_left,null);
                 icon = resize(icon);
-                this.setPadding(0,0,0,ARROW_PADDING);
                 this.setCompoundDrawablesWithIntrinsicBounds(
                         null, null, null, icon);
                 break;
