@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.view.View.OnKeyListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
@@ -22,7 +24,7 @@ import static android.R.attr.fragment;
  * Created by eitansh on 26/09/2016.
  */
 
-public class AnswerCell extends EditText{
+public class AnswerCell extends EditText implements OnFocusChangeListener , OnKeyListener, TextWatcher{
 
 
     public AnswerCell(View v, int cell_size) {
@@ -35,31 +37,50 @@ public class AnswerCell extends EditText{
         this.setCursorVisible(false);
         this.setGravity(Gravity.CENTER);
 
-        this.setOnFocusChangeListener( new View.OnFocusChangeListener(){
+        setOnFocusChangeListener(this);
+        setOnKeyListener(this);
+        addTextChangedListener(this);
+    }
 
-            public void onFocusChange( View view, boolean hasfocus){
-                if(hasfocus){
-                    view.setBackgroundResource( R.drawable.answer_cell_has_focus);
-                }
-                else{
-                    view.setBackgroundResource( R.drawable.answer_cell_lost_focus);
-                }
-            }
-        });
+    @Override
+    public void onFocusChange(View view, boolean b) {
+        if(b){
+            view.setBackgroundResource( R.drawable.answer_cell_has_focus);
+        }
+        else{
+            view.setBackgroundResource( R.drawable.answer_cell_lost_focus);
+        }
+    }
 
-        this.setOnKeyListener(new OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                //You can identify which key pressed buy checking keyCode value with KeyEvent.KEYCODE_
-                if(keyCode == KeyEvent.KEYCODE_DEL) {
-                    ((EditText)v).setText("");
-                    return true;
-                }
-                return false;
-            }
-        });
+    @Override
+    public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
+        //You can identify which key pressed buy checking keyCode value with KeyEvent.KEYCODE_
+        if(keyCode == KeyEvent.KEYCODE_DEL) {
+            ((EditText)view).setText("");
+            return true;
+        }
+        return false;
+    }
 
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
 
     }
 
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count,
+                                  int after) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        String newText = s.toString();
+        int iLen=s.length();
+        if (iLen>1){
+            String t = newText.substring(0, 1);
+            this.setText(t);
+        }
+        QuestionFragment.goToNextAvailableCell();
+    }
 }

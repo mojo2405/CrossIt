@@ -1,5 +1,10 @@
 package com.example.david.CrossIt.GameBoard.QuestionDialog;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,11 +14,13 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.david.CrossIt.AnimationManager.AnimationManager;
 import com.example.david.CrossIt.GameBoard.GameBoard;
 import com.example.david.CrossIt.GameBoard.GridCell;
 import com.example.david.CrossIt.R;
@@ -26,21 +33,23 @@ import static com.facebook.FacebookSdk.getApplicationContext;
  */
 public class QuestionFragment extends DialogFragment {
     private static GridCell gridCell;
+    private static int answer_length;
+    private static TextView[] EditTextArray;
+    private static String answer;
+    private static DialogFragment dialog = null;
     String question;
-    String answer;
 
 
-    int answer_length;
 
     int cell_margin=10;
     int cell_size=180;
-    EditText[] EditTextArray;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         FacebookSdk.sdkInitialize(getApplicationContext());
-
+        dialog = this;
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_question, container, false);
         TextView questionTxt = (TextView) v.findViewById(R.id.questionTextView);
@@ -67,8 +76,6 @@ public class QuestionFragment extends DialogFragment {
         if (!tv[0].getText().equals("")){
             EditTextToSeeFirst.setText(tv[0].getText().toString());
             EditTextToSeeFirst.setFocusable(false);
-        }else{
-            setListener(EditTextToSeeFirst);
         }
 
 
@@ -91,8 +98,6 @@ public class QuestionFragment extends DialogFragment {
             if (!tv[i].getText().equals("")){
                 newEditText.setText(tv[i].getText().toString());
                 newEditText.setFocusable(false);
-            }else{
-                setListener(newEditText);
             }
 
             EditTextArray[i] = newEditText;
@@ -105,58 +110,34 @@ public class QuestionFragment extends DialogFragment {
         return v;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+
+        final View decorView = getDialog()
+                .getWindow()
+                .getDecorView();
+
+        ObjectAnimator scaleDown = ObjectAnimator.ofPropertyValuesHolder(decorView,
+
+                PropertyValuesHolder.ofFloat("scaleX", 0.5f, 1.0f),
+                PropertyValuesHolder.ofFloat("scaleY", 0.5f, 1.0f),
+                PropertyValuesHolder.ofFloat("alpha", 0.0f, 1.0f));
+        scaleDown.setDuration(500);
+        scaleDown.start();
+
+    }
+
     public static GridCell getGridCell(){
         return gridCell;
     }
 
-    private void correctAnswer(){
-        GridCell cell = getGridCell();
-        setCorrectAnswer(cell);
-
-        // TODO : Cool correct animation
-        // TODO : Add points
-        // TODO : progress wheel advance
-    }
-
-    public void setCorrectAnswer(GridCell cell){
-        TextView[] tv = GameBoard.getCorrespondingTextView(cell);
-        for (int i = 0 ; i < tv.length ;i++) {
-            String s = Character.toString( cell.getAnswer().charAt(i));
-            tv[i].setText(s);
-            this.dismiss();
-        }
-    }
 
 
-    public void setListener(final AnswerCell ac){
 
-        ac.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count,
-                                          int after) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                String newText = s.toString();
-                int iLen=s.length();
-                if (iLen>1){
-                    String t = newText.substring(0, 1);
-                    ac.setText(t);
-                }
-                goToNextAvailableCell();
-            }
-        });
-
-    }
-
-    public  void goToNextAvailableCell(){
+    public static void goToNextAvailableCell(){
         int focusedEditText = 0;
         for (int i = 0; i<answer_length ; i++) {
             if (EditTextArray[i].hasFocus()){
@@ -179,7 +160,7 @@ public class QuestionFragment extends DialogFragment {
         }
     }
 
-    private boolean checkCorrectAnswer(){
+    private static boolean checkCorrectAnswer(){
         String tryAnswer = "";
         for (int i = 0; i<answer_length ; i++) {
             tryAnswer += EditTextArray[i].getText().toString();
@@ -191,4 +172,25 @@ public class QuestionFragment extends DialogFragment {
         }
         return false;
     }
+
+    private static void correctAnswer(){
+
+        GridCell cell = getGridCell();
+        TextView[] tv = GameBoard.getCorrespondingTextView(cell);
+        for (int i = 0 ; i < tv.length ;i++) {
+            String s = Character.toString( cell.getAnswer().charAt(i));
+            tv[i].setText(s);
+        }
+
+        QuestionFragment.dialog.dismiss();
+
+        //Remove listener for this Grid Cell
+        cell.setOnClickListener(null);
+        // TODO : Cool correct animation
+        // TODO : Add points
+        // TODO : progress wheel advance
+    }
+
+
+
 }
