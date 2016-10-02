@@ -36,7 +36,7 @@ public class QuestionFragment extends DialogFragment {
     private static int answer_length;
     private static TextView[] EditTextArray;
     private static String answer;
-    private static DialogFragment dialog = null;
+
     String question;
 
 
@@ -49,7 +49,7 @@ public class QuestionFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         FacebookSdk.sdkInitialize(getApplicationContext());
-        dialog = this;
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_question, container, false);
         TextView questionTxt = (TextView) v.findViewById(R.id.questionTextView);
@@ -72,7 +72,7 @@ public class QuestionFragment extends DialogFragment {
 
 
         EditTextArray = new EditText[answer_length];
-        AnswerCell EditTextToSeeFirst = new AnswerCell(v,cell_size);
+        AnswerCell EditTextToSeeFirst = new AnswerCell(v,this,cell_size);
         if (!tv[0].getText().equals("")){
             EditTextToSeeFirst.setText(tv[0].getText().toString());
             EditTextToSeeFirst.setFocusable(false);
@@ -93,7 +93,7 @@ public class QuestionFragment extends DialogFragment {
                     (LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             lparams.addRule(RelativeLayout.LEFT_OF, EditTextArray[i-1].getId());
             lparams.setMargins(cell_margin,0,cell_margin,0);
-            AnswerCell newEditText = new AnswerCell(v,cell_size);
+            AnswerCell newEditText = new AnswerCell(v,this,cell_size);
 
             if (!tv[i].getText().equals("")){
                 newEditText.setText(tv[i].getText().toString());
@@ -137,7 +137,7 @@ public class QuestionFragment extends DialogFragment {
 
 
 
-    public static void goToNextAvailableCell(){
+    public void goToNextAvailableCell(){
         int focusedEditText = 0;
         for (int i = 0; i<answer_length ; i++) {
             if (EditTextArray[i].hasFocus()){
@@ -160,7 +160,7 @@ public class QuestionFragment extends DialogFragment {
         }
     }
 
-    private static boolean checkCorrectAnswer(){
+    private boolean checkCorrectAnswer(){
         String tryAnswer = "";
         for (int i = 0; i<answer_length ; i++) {
             tryAnswer += EditTextArray[i].getText().toString();
@@ -173,7 +173,7 @@ public class QuestionFragment extends DialogFragment {
         return false;
     }
 
-    private static void correctAnswer(){
+    private void correctAnswer   (){
 
         GridCell cell = getGridCell();
         TextView[] tv = GameBoard.getCorrespondingTextView(cell);
@@ -182,7 +182,7 @@ public class QuestionFragment extends DialogFragment {
             tv[i].setText(s);
         }
 
-        QuestionFragment.dialog.dismiss();
+        this.dismiss();
 
         //Remove listener for this Grid Cell
         cell.setOnClickListener(null);
@@ -190,7 +190,5 @@ public class QuestionFragment extends DialogFragment {
         // TODO : Add points
         // TODO : progress wheel advance
     }
-
-
 
 }

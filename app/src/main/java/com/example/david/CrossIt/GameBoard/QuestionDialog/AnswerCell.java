@@ -25,10 +25,16 @@ import static android.R.attr.fragment;
  */
 
 public class AnswerCell extends EditText implements OnFocusChangeListener , OnKeyListener, TextWatcher{
+    private QuestionFragment questionFragment;
+
+    public AnswerCell(Context context) {
+        super(context);
+    }
 
 
-    public AnswerCell(View v, int cell_size) {
+    public AnswerCell(View v, QuestionFragment questionFragment,int cell_size) {
         super(v.getContext());
+        this.questionFragment = questionFragment;
 
         this.setId(View.generateViewId());
         this.setBackgroundResource(R.color.answerCellBackground);
@@ -81,6 +87,6 @@ public class AnswerCell extends EditText implements OnFocusChangeListener , OnKe
             String t = newText.substring(0, 1);
             this.setText(t);
         }
-        QuestionFragment.goToNextAvailableCell();
+        questionFragment.goToNextAvailableCell();
     }
 }
